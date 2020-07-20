@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
 
 mix
-    .js('src/js/index.js', 'assets/index.js')
-    .sass('src/sass/index.scss', 'assets/stylesheet.css');
+    .js('src/js/javascript.js', 'assets/javascript.js')
+    .sass('src/sass/style.scss', 'assets/stylesheet.css');
