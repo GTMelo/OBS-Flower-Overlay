@@ -5,3 +5,5 @@ var app = new Vue({
     components: {},
     data: {}
 });
+
+alert("werks");

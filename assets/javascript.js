@@ -12588,6 +12588,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   components: {},
   data: {}
 });
+alert("werks");
 
 /***/ }),
 
