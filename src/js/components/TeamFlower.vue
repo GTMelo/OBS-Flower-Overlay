@@ -15,23 +15,23 @@
                 </stop>
             </linearGradient>
             <clipPath id="clipChar1">
-                <path id="char1" class="cls-1"
+                <path id="char1"
                       d="M117.79 101.32a92.47 92.47 0 01-6.86 35.84 73.25 73.25 0 01-9.56 16.54 52.45 52.45 0 00-7.08-7.21 54.48 54.48 0 00-35.4-13c-1.53 0-3 .05-4.53.2a54.49 54.49 0 00-37.26 19.2C7.3 139.86 1.28 122 1.28 101.32A117.14 117.14 0 0159.54 0a117.46 117.46 0 0152 63.38 116.53 116.53 0 016.25 37.94z"/>
             </clipPath>
             <clipPath id="clipChar2">
-                <path id="char2" class="cls-1"
+                <path id="char2"
                       d="M184.44 137.16a116.89 116.89 0 01-22.38 31.27 92.4 92.4 0 01-30.24 20.5 72.31 72.31 0 01-18.42 4.92 53.71 53.71 0 00.28-5.55 45.43 45.43 0 00-.2-4.54 54.51 54.51 0 00-12.11-30.06 73.25 73.25 0 009.56-16.54 92.47 92.47 0 006.86-35.84 116.53 116.53 0 00-6.29-37.94 117.39 117.39 0 0181-7.78 117.48 117.48 0 01-8.06 81.56z"/>
             </clipPath>
             <clipPath id="clipChar3">
-                <path id="char3" class="cls-1"
+                <path id="char3"
                       d="M247.2 188.93a117.11 117.11 0 01-101.32 58.27 93 93 0 01-35.88-6.86 73.32 73.32 0 01-16.52-9.58 53.43 53.43 0 007.21-7.06 54.64 54.64 0 0012.69-29.85 72.31 72.31 0 0018.42-4.92 92.4 92.4 0 0030.24-20.5 116.89 116.89 0 0022.38-31.27 117.58 117.58 0 0162.78 51.77z"/>
             </clipPath>
             <clipPath id="clipChar4">
-                <path id="char4" class="cls-1"
+                <path id="char4"
                       d="M191.6 321.89a117 117 0 01-112.84-30.44c-14.91-14.92-23.32-32.2-25.41-48.63 1.83.18 3.68.27 5.54.27a54.53 54.53 0 0034.61-12.33 73.32 73.32 0 0016.5 9.58 93 93 0 0035.86 6.86 117 117 0 0037.93-6.29 117.51 117.51 0 017.81 80.98z"/>
             </clipPath>
             <clipPath id="clipChar5">
-                <path id="char5" class="cls-1"
+                <path id="char5"
                       d="M110 313.84a117.61 117.61 0 01-51.78 62.77A117.17 117.17 0 010 275.28c0-21.1 6.28-39.27 16.43-52.35a54.7 54.7 0 0036.92 19.89c2.09 16.43 10.5 33.71 25.41 48.63A117 117 0 00110 313.84z"/>
             </clipPath>
         </defs>
@@ -48,11 +48,23 @@
                   d="M110 313.84a117.61 117.61 0 01-51.78 62.77A117.17 117.17 0 010 275.28c0-21.1 6.28-39.27 16.43-52.35a54.7 54.7 0 0036.92 19.89c2.09 16.43 10.5 33.71 25.41 48.63A117 117 0 00110 313.84z"/>
         </g>
         <g>
-            <image :xlink:href="'assets/images/' + team['1'].image" clip-path="url(#clipChar1)" x="-41" y="-18"/>
-            <image :xlink:href="'assets/images/' + team['2'].image" clip-path="url(#clipChar2)" x="45" y="15"/>
-            <image :xlink:href="'assets/images/' + team['3'].image" clip-path="url(#clipChar3)" x="60" y="89"/>
-            <image :xlink:href="'assets/images/' + team['4'].image" clip-path="url(#clipChar4)" x="25" y="170"/>
-            <image :xlink:href="'assets/images/' + team['5'].image" clip-path="url(#clipChar5)" x="-42" y="200"/>
+            <image :class="{recolor: (teamStates['1']!=='waiting')}" :xlink:href="'assets/images/' + team['1'].image" clip-path="url(#clipChar1)" x="-41" y="-18"/>
+            <image :class="{recolor: (teamStates['2']!=='waiting')}" :xlink:href="'assets/images/' + team['2'].image" clip-path="url(#clipChar2)" x="45" y="15"/>
+            <image :class="{recolor: (teamStates['3']!=='waiting')}" :xlink:href="'assets/images/' + team['3'].image" clip-path="url(#clipChar3)" x="60" y="89"/>
+            <image :class="{recolor: (teamStates['4']!=='waiting')}" :xlink:href="'assets/images/' + team['4'].image" clip-path="url(#clipChar4)" x="25" y="170"/>
+            <image :class="{recolor: (teamStates['5']!=='waiting')}" :xlink:href="'assets/images/' + team['5'].image" clip-path="url(#clipChar5)" x="-42" y="200"/>
+        </g>
+        <g>
+            <path :id="'p' + player + '-recolor-ch1-overlay'" v-if="teamStates['1'] !== 'waiting'" :fill="stateColors[teamStates['1']]" class="recolor-overlay"
+                  d="M117.79 101.32a92.47 92.47 0 01-6.86 35.84 73.25 73.25 0 01-9.56 16.54 52.45 52.45 0 00-7.08-7.21 54.48 54.48 0 00-35.4-13c-1.53 0-3 .05-4.53.2a54.49 54.49 0 00-37.26 19.2C7.3 139.86 1.28 122 1.28 101.32A117.14 117.14 0 0159.54 0a117.46 117.46 0 0152 63.38 116.53 116.53 0 016.25 37.94z"/>
+            <path :id="'p' + player + '-recolor-ch2-overlay'" v-if="teamStates['2'] !== 'waiting'" :fill="stateColors[teamStates['2']]" class="recolor-overlay"
+                  d="M184.44 137.16a116.89 116.89 0 01-22.38 31.27 92.4 92.4 0 01-30.24 20.5 72.31 72.31 0 01-18.42 4.92 53.71 53.71 0 00.28-5.55 45.43 45.43 0 00-.2-4.54 54.51 54.51 0 00-12.11-30.06 73.25 73.25 0 009.56-16.54 92.47 92.47 0 006.86-35.84 116.53 116.53 0 00-6.29-37.94 117.39 117.39 0 0181-7.78 117.48 117.48 0 01-8.06 81.56z"/>
+            <path :id="'p' + player + '-recolor-ch3-overlay'" v-if="teamStates['3'] !== 'waiting'" :fill="stateColors[teamStates['3']]" class="recolor-overlay"
+                  d="M247.2 188.93a117.11 117.11 0 01-101.32 58.27 93 93 0 01-35.88-6.86 73.32 73.32 0 01-16.52-9.58 53.43 53.43 0 007.21-7.06 54.64 54.64 0 0012.69-29.85 72.31 72.31 0 0018.42-4.92 92.4 92.4 0 0030.24-20.5 116.89 116.89 0 0022.38-31.27 117.58 117.58 0 0162.78 51.77z"/>
+            <path :id="'p' + player + '-recolor-ch4-overlay'" v-if="teamStates['4'] !== 'waiting'" :fill="stateColors[teamStates['4']]" class="recolor-overlay"
+                  d="M191.6 321.89a117 117 0 01-112.84-30.44c-14.91-14.92-23.32-32.2-25.41-48.63 1.83.18 3.68.27 5.54.27a54.53 54.53 0 0034.61-12.33 73.32 73.32 0 0016.5 9.58 93 93 0 0035.86 6.86 117 117 0 0037.93-6.29 117.51 117.51 0 017.81 80.98z"/>
+            <path :id="'p' + player + '-recolor-ch5-overlay'" v-if="teamStates['5'] !== 'waiting'" :fill="stateColors[teamStates['5']]" class="recolor-overlay"
+                  d="M110 313.84a117.61 117.61 0 01-51.78 62.77A117.17 117.17 0 010 275.28c0-21.1 6.28-39.27 16.43-52.35a54.7 54.7 0 0036.92 19.89c2.09 16.43 10.5 33.71 25.41 48.63A117 117 0 00110 313.84z"/>
         </g>
         <path id="Center" :fill="'url('+ '#anim-gradient-p' + player + ')'"
               d="M113.68 188.3a53.71 53.71 0 01-.28 5.55 54.64 54.64 0 01-12.69 29.85 53.43 53.43 0 01-7.21 7.06 54.53 54.53 0 01-34.61 12.33c-1.86 0-3.71-.09-5.54-.27a54.8 54.8 0 011-109.12c1.5-.15 3-.2 4.53-.2a54.48 54.48 0 0135.4 13 52.45 52.45 0 017.08 7.21 54.51 54.51 0 0112.11 30.06 45.43 45.43 0 01.21 4.53z"/>
@@ -68,7 +80,8 @@
         name: "TeamFlower",
         props: ['player', 'position', 'scale', 'gdc1', 'gdc2'],
         created() {
-            EventBus.$on('changedchar', this.changeDisplayCharacter)
+            EventBus.$on('changedchar', this.changeDisplayCharacter);
+            EventBus.$on('changedstate', this.changeState)
         },
         data() {
             return {
@@ -79,7 +92,17 @@
                     4: {code: "disabled", displayName: "Disabled", image: ""},
                     5: {code: "disabled", displayName: "Disabled", image: ""}
                 },
-                enabled: true,
+                teamStates: {
+                    1: "waiting",
+                    2: "waiting",
+                    3: "waiting",
+                    4: "waiting",
+                    5: "waiting",
+                },
+                stateColors: {
+                    win: 'green',
+                    lose: 'gray'
+                }
             }
         },
         methods: {
@@ -90,15 +113,27 @@
                         return true;
                     }
                     this.team[payload.charNo] = payload.char;
-                    return true;
                 }
             },
             mountGradient(colorStart, colorEnd) {
                 return `${colorStart}; ${colorEnd}; ${colorStart}`;
+            },
+            changeState(payload){
+                if(this.player === payload.player){
+                    this.teamStates[payload.charNo] = payload.state;
+                }
             }
         }
     }
 </script>
 
 <style scoped>
+    .recolor {
+        filter: grayscale(100%);
+    }
+
+    .recolor-overlay {
+        opacity: 0.5;
+    }
+
 </style>

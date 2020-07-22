@@ -16,19 +16,22 @@
             <div :id="charPrefix(i) + '-status'" class="flex">
                 <div class="mr-2">
                     <label>
-                        <input type="radio" :name="charPrefix(i) + '-status'" :id="charPrefix(i) + '-status'" value="waiting">
+                        <input type="radio" :name="charPrefix(i) + '-status'" :id="charPrefix(i) + '-status'" value="waiting"
+                        @click="emitStateChangeEvent(i, 'waiting')">
                         Waiting
                     </label>
                 </div>
                 <div class="mr-2">
                     <label>
-                        <input type="radio" :name="charPrefix(i) + '-status'" :id="charPrefix(i) + '-status'" value="win">
+                        <input type="radio" :name="charPrefix(i) + '-status'" :id="charPrefix(i) + '-status'" value="win"
+                        @click="emitStateChangeEvent(i, 'win')">
                         Won
                     </label>
                 </div>
                 <div class="mr-2">
                     <label>
-                        <input type="radio" :name="charPrefix(i) + '-status'" :id="charPrefix(i) + '-status'" value="lost">
+                        <input type="radio" :name="charPrefix(i) + '-status'" :id="charPrefix(i) + '-status'" value="lost"
+                        @click="emitStateChangeEvent(i, 'lose')">
                         Lost
                     </label>
                 </div>
@@ -67,6 +70,13 @@
                     player: this.player,
                     charNo: charNo,
                     char: char
+                })
+            },
+            emitStateChangeEvent: function (charNo, state) {
+                EventBus.$emit('changedstate', {
+                    player: this.player,
+                    charNo: charNo,
+                    state: state
                 })
             }
 

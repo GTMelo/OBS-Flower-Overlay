@@ -13,18 +13,18 @@
 
 <div id="app">
     <section id="output" class="pb-3 flex flex-1 justify-between">
-        <team-flower player="1" position="left" scale="1" class="facing-left" gdc1="#c48825"
-                     gdc2="#a200ff"></team-flower>
+        <team-flower player="1" position="left" scale="1" class="facing-left"
+                     gdc1="#440f8e" gdc2="#00e8ff"></team-flower>
 
-        <team-flower player="2" position="right" scale="1" class="facing-right" gdc1="#00ff00"
-                     gdc2="#003dff"></team-flower>
+        <team-flower player="2" position="right" scale="1" class="facing-right"
+                     gdc1="#5c0b0c" gdc2="#ff00ce"></team-flower>
     </section>
-    <section id="controls" class="px-12 flex justify-between">
-        <div class="flex flex-col flex-1 bg-red-200 p-3 justify-center items-center pb-8 mr-2">
+    <section id="controls" class="px-12 flex justify-between mb-2">
+        <div class="flex flex-col flex-1 bg-blue-200 p-3 justify-center items-center pb-8 mr-2">
             <span class="font-bold text-2xl mb-2">Player 1</span>
             <player-control-panel player="1" :options="characterList" class="flex-1 "></player-control-panel>
         </div>
-        <div class="flex flex-col flex-1 bg-blue-200 p-3 justify-center items-center pb-8">
+        <div class="flex flex-col flex-1 bg-red-200 p-3 justify-center items-center pb-8">
             <span class="font-bold text-2xl mb-2">Player 2</span>
             <player-control-panel player="2" :options="characterList" class="flex-1"></player-control-panel>
         </div>

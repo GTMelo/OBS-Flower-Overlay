@@ -135,6 +135,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerControlPanel",
@@ -183,6 +186,13 @@ __webpack_require__.r(__webpack_exports__);
         player: this.player,
         charNo: charNo,
         "char": _char
+      });
+    },
+    emitStateChangeEvent: function emitStateChangeEvent(charNo, state) {
+      _javascript__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit('changedstate', {
+        player: this.player,
+        charNo: charNo,
+        state: state
       });
     }
   }
@@ -263,12 +273,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TeamFlower",
   props: ['player', 'position', 'scale', 'gdc1', 'gdc2'],
   created: function created() {
     _javascript__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on('changedchar', this.changeDisplayCharacter);
+    _javascript__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on('changedstate', this.changeState);
   },
   data: function data() {
     return {
@@ -299,7 +322,17 @@ __webpack_require__.r(__webpack_exports__);
           image: ""
         }
       },
-      enabled: true
+      teamStates: {
+        1: "waiting",
+        2: "waiting",
+        3: "waiting",
+        4: "waiting",
+        5: "waiting"
+      },
+      stateColors: {
+        win: 'green',
+        lose: 'gray'
+      }
     };
   },
   methods: {
@@ -315,11 +348,15 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         this.team[payload.charNo] = payload["char"];
-        return true;
       }
     },
     mountGradient: function mountGradient(colorStart, colorEnd) {
       return "".concat(colorStart, "; ").concat(colorEnd, "; ").concat(colorStart);
+    },
+    changeState: function changeState(payload) {
+      if (this.player === payload.player) {
+        this.teamStates[payload.charNo] = payload.state;
+      }
     }
   }
 });
@@ -339,6 +376,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "[type=radio] + img[data-v-9fda6418] {\n  cursor: pointer;\n}\n[type=radio]:checked + img[data-v-9fda6418] {\n  outline: 2px solid blue;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".recolor[data-v-4ea26638] {\n  -webkit-filter: grayscale(100%);\n          filter: grayscale(100%);\n}\n.recolor-overlay[data-v-4ea26638] {\n  opacity: 0.5;\n}\n\n", ""]);
 
 // exports
 
@@ -834,6 +890,36 @@ process.umask = function() { return 0; };
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerControlPanel.vue?vue&type=style&index=0&id=9fda6418&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./src/js/components/PlayerControlPanel.vue?vue&type=style&index=0&id=9fda6418&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1529,6 +1615,11 @@ var render = function() {
                       name: _vm.charPrefix(i) + "-status",
                       id: _vm.charPrefix(i) + "-status",
                       value: "waiting"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.emitStateChangeEvent(i, "waiting")
+                      }
                     }
                   }),
                   _vm._v("\n                    Waiting\n                ")
@@ -1543,6 +1634,11 @@ var render = function() {
                       name: _vm.charPrefix(i) + "-status",
                       id: _vm.charPrefix(i) + "-status",
                       value: "win"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.emitStateChangeEvent(i, "win")
+                      }
                     }
                   }),
                   _vm._v("\n                    Won\n                ")
@@ -1557,6 +1653,11 @@ var render = function() {
                       name: _vm.charPrefix(i) + "-status",
                       id: _vm.charPrefix(i) + "-status",
                       value: "lost"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.emitStateChangeEvent(i, "lose")
+                      }
                     }
                   }),
                   _vm._v("\n                    Lost\n                ")
@@ -1649,7 +1750,6 @@ var render = function() {
           _vm._v(" "),
           _c("clipPath", { attrs: { id: "clipChar1" } }, [
             _c("path", {
-              staticClass: "cls-1",
               attrs: {
                 id: "char1",
                 d:
@@ -1660,7 +1760,6 @@ var render = function() {
           _vm._v(" "),
           _c("clipPath", { attrs: { id: "clipChar2" } }, [
             _c("path", {
-              staticClass: "cls-1",
               attrs: {
                 id: "char2",
                 d:
@@ -1671,7 +1770,6 @@ var render = function() {
           _vm._v(" "),
           _c("clipPath", { attrs: { id: "clipChar3" } }, [
             _c("path", {
-              staticClass: "cls-1",
               attrs: {
                 id: "char3",
                 d:
@@ -1682,7 +1780,6 @@ var render = function() {
           _vm._v(" "),
           _c("clipPath", { attrs: { id: "clipChar4" } }, [
             _c("path", {
-              staticClass: "cls-1",
               attrs: {
                 id: "char4",
                 d:
@@ -1693,7 +1790,6 @@ var render = function() {
           _vm._v(" "),
           _c("clipPath", { attrs: { id: "clipChar5" } }, [
             _c("path", {
-              staticClass: "cls-1",
               attrs: {
                 id: "char5",
                 d:
@@ -1754,6 +1850,7 @@ var render = function() {
       _vm._v(" "),
       _c("g", [
         _c("image", {
+          class: { recolor: _vm.teamStates["1"] !== "waiting" },
           attrs: {
             "xlink:href": "assets/images/" + _vm.team["1"].image,
             "clip-path": "url(#clipChar1)",
@@ -1763,6 +1860,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("image", {
+          class: { recolor: _vm.teamStates["2"] !== "waiting" },
           attrs: {
             "xlink:href": "assets/images/" + _vm.team["2"].image,
             "clip-path": "url(#clipChar2)",
@@ -1772,6 +1870,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("image", {
+          class: { recolor: _vm.teamStates["3"] !== "waiting" },
           attrs: {
             "xlink:href": "assets/images/" + _vm.team["3"].image,
             "clip-path": "url(#clipChar3)",
@@ -1781,6 +1880,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("image", {
+          class: { recolor: _vm.teamStates["4"] !== "waiting" },
           attrs: {
             "xlink:href": "assets/images/" + _vm.team["4"].image,
             "clip-path": "url(#clipChar4)",
@@ -1790,6 +1890,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("image", {
+          class: { recolor: _vm.teamStates["5"] !== "waiting" },
           attrs: {
             "xlink:href": "assets/images/" + _vm.team["5"].image,
             "clip-path": "url(#clipChar5)",
@@ -1797,6 +1898,68 @@ var render = function() {
             y: "200"
           }
         })
+      ]),
+      _vm._v(" "),
+      _c("g", [
+        _vm.teamStates["1"] !== "waiting"
+          ? _c("path", {
+              staticClass: "recolor-overlay",
+              attrs: {
+                id: "p" + _vm.player + "-recolor-ch1-overlay",
+                fill: _vm.stateColors[_vm.teamStates["1"]],
+                d:
+                  "M117.79 101.32a92.47 92.47 0 01-6.86 35.84 73.25 73.25 0 01-9.56 16.54 52.45 52.45 0 00-7.08-7.21 54.48 54.48 0 00-35.4-13c-1.53 0-3 .05-4.53.2a54.49 54.49 0 00-37.26 19.2C7.3 139.86 1.28 122 1.28 101.32A117.14 117.14 0 0159.54 0a117.46 117.46 0 0152 63.38 116.53 116.53 0 016.25 37.94z"
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.teamStates["2"] !== "waiting"
+          ? _c("path", {
+              staticClass: "recolor-overlay",
+              attrs: {
+                id: "p" + _vm.player + "-recolor-ch2-overlay",
+                fill: _vm.stateColors[_vm.teamStates["2"]],
+                d:
+                  "M184.44 137.16a116.89 116.89 0 01-22.38 31.27 92.4 92.4 0 01-30.24 20.5 72.31 72.31 0 01-18.42 4.92 53.71 53.71 0 00.28-5.55 45.43 45.43 0 00-.2-4.54 54.51 54.51 0 00-12.11-30.06 73.25 73.25 0 009.56-16.54 92.47 92.47 0 006.86-35.84 116.53 116.53 0 00-6.29-37.94 117.39 117.39 0 0181-7.78 117.48 117.48 0 01-8.06 81.56z"
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.teamStates["3"] !== "waiting"
+          ? _c("path", {
+              staticClass: "recolor-overlay",
+              attrs: {
+                id: "p" + _vm.player + "-recolor-ch3-overlay",
+                fill: _vm.stateColors[_vm.teamStates["3"]],
+                d:
+                  "M247.2 188.93a117.11 117.11 0 01-101.32 58.27 93 93 0 01-35.88-6.86 73.32 73.32 0 01-16.52-9.58 53.43 53.43 0 007.21-7.06 54.64 54.64 0 0012.69-29.85 72.31 72.31 0 0018.42-4.92 92.4 92.4 0 0030.24-20.5 116.89 116.89 0 0022.38-31.27 117.58 117.58 0 0162.78 51.77z"
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.teamStates["4"] !== "waiting"
+          ? _c("path", {
+              staticClass: "recolor-overlay",
+              attrs: {
+                id: "p" + _vm.player + "-recolor-ch4-overlay",
+                fill: _vm.stateColors[_vm.teamStates["4"]],
+                d:
+                  "M191.6 321.89a117 117 0 01-112.84-30.44c-14.91-14.92-23.32-32.2-25.41-48.63 1.83.18 3.68.27 5.54.27a54.53 54.53 0 0034.61-12.33 73.32 73.32 0 0016.5 9.58 93 93 0 0035.86 6.86 117 117 0 0037.93-6.29 117.51 117.51 0 017.81 80.98z"
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.teamStates["5"] !== "waiting"
+          ? _c("path", {
+              staticClass: "recolor-overlay",
+              attrs: {
+                id: "p" + _vm.player + "-recolor-ch5-overlay",
+                fill: _vm.stateColors[_vm.teamStates["5"]],
+                d:
+                  "M110 313.84a117.61 117.61 0 01-51.78 62.77A117.17 117.17 0 010 275.28c0-21.1 6.28-39.27 16.43-52.35a54.7 54.7 0 0036.92 19.89c2.09 16.43 10.5 33.71 25.41 48.63A117 117 0 00110 313.84z"
+              }
+            })
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("path", {
@@ -14053,7 +14216,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TeamFlower_vue_vue_type_template_id_4ea26638_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TeamFlower.vue?vue&type=template&id=4ea26638&scoped=true& */ "./src/js/components/TeamFlower.vue?vue&type=template&id=4ea26638&scoped=true&");
 /* harmony import */ var _TeamFlower_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TeamFlower.vue?vue&type=script&lang=js& */ "./src/js/components/TeamFlower.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css& */ "./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -14061,7 +14226,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _TeamFlower_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _TeamFlower_vue_vue_type_template_id_4ea26638_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _TeamFlower_vue_vue_type_template_id_4ea26638_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -14090,6 +14255,22 @@ component.options.__file = "src/js/components/TeamFlower.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TeamFlower.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/js/components/TeamFlower.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css&":
+/*!***************************************************************************************************!*\
+  !*** ./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css& ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./src/js/components/TeamFlower.vue?vue&type=style&index=0&id=4ea26638&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamFlower_vue_vue_type_style_index_0_id_4ea26638_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
