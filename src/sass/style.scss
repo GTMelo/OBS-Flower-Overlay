@@ -4,5 +4,13 @@
 
 @tailwind utilities;
 
-#output {
+
+.facing-left {
+  transform: scale(0.8);
+  transform-origin: left;
+}
+
+.facing-right {
+  transform: scaleX(-0.8) scaleY(0.8) translateX(100%);
+  transform-origin: right;
 }
